@@ -5,7 +5,7 @@ from time import perf_counter
 
 # This function converts the time to a string for printing in a 
 # standardized format
-def secondsToStr(elapsed=None):
+def seconds_to_str(elapsed=None):
     if elapsed is None:
         return strftime("%Y-%m-%d %H:%M:%S", localtime())
     else:
@@ -18,7 +18,7 @@ def log(s, elapsed=None):
     print(line)
     
     # Prints time with provided string following it
-    print(secondsToStr(), '-', s)
+    print(seconds_to_str(), '-', s)
     
     # If elapsed time provided, prints it on a new line
     if elapsed:
@@ -29,7 +29,7 @@ def log(s, elapsed=None):
 # def endlog():
 #     end = time()
 #     elapsed = end - start
-#     log("End Program", secondsToStr(elapsed))
+#     log("End Program", seconds_to_str(elapsed))
     
 # start = time()
 # atexit.register(endlog)

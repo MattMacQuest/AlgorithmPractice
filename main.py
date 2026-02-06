@@ -3,7 +3,6 @@ from modules.menu import *
 # from modules.timekeeper import *
 # from time import perf_counter
 
-
 def main():
     print("Welcome to the sorting algorithm efficiency tester!")
     
