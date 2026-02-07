@@ -1,0 +1,14 @@
+main_menu_options: 
+  "1": 
+    label: Sorting Algorithms
+    action: sorting_algorithms
+  "2":
+    label: Searching Algorithms
+    action: searching_algorithms
+  "3":
+    label: Settings
+    action: settings
+  "4":
+    label: Quit
+    action: quit
+

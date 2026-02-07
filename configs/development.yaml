@@ -1,0 +1,7 @@
+api:
+  base_url: http://localhost:8000
+  timeout: 30
+database:
+  host: localhost
+  name: dev_db
+  port: 5432

@@ -15,3 +15,8 @@ This repo is designed solely as a "playground" of sorts to test self-implementat
     - Add memory benchmarking
 - Add support for multiple test types
 - Add support for data structures and related tests
+
+## Ideas
+- Creating an "Application" class that holds things like settings, generated list
+    - Maybe add a history of performance metrics as well
+    - Could include the functionality of the ConfigManager class
