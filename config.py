@@ -1,8 +1,9 @@
 # This file should be reworked into a YAML or similar format
+import os
 
 MIN_VALUE = 0
 MAX_VALUE = 4294967296
-MAX_PROCESSES = 22
+MAX_PROCESSES = os.cpu_count()
 
 MENU_WIDTH = 50
 MAIN_MENU_OPTIONS = [
