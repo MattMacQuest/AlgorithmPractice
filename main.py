@@ -1,66 +1,42 @@
 from modules.generate_list import *
-from modules.menu import *
+from modules.Menu import *
+from modules.Application import *
 # from modules.timekeeper import *
 # from time import perf_counter
-from modules.ConfigManager import *
-from os import system
-from config import MAIN_MENU_OPTIONS, MENU_WIDTH
+# from modules.ConfigManager import *
+# from os import system
+# from config import MAIN_MENU_OPTIONS, MENU_WIDTH
+# from menu_test import *
+
+# app = Application()
 
 def main():
     print("Welcome to the sorting algorithm efficiency tester!")
     
-    main_menu_options = dict(enumerate(MAIN_MENU_OPTIONS, start=1))
-    unsorted_list = []
+    # main_menu_options = dict(enumerate(MAIN_MENU_OPTIONS, start=1))
+    # unsorted_list = []
+    app = Application()
+    main_menu = set_menu_hierarchy(app)
+    main_menu.run()
     
-    # print_menu("Main Menu", menu_options)
-    while True:
-        print_menu("Main Menu", main_menu_options)
-        selection = input("Select an option: ")
-        
-        # I hate this. As written will result in nested match statements and spaghetti.
-        # I need to migrate this elsewhere and change how I handle it. Might be time 
-        # to use an external menu library. Main challenge: data persistence (The unsorted list
-        # must be generated on demand, of a specified size, and be usable across menus) preferably
-        # without the use of globals. An Application class could fix this as the scope of this
-        # is growing out of control and getting far more general
-        match main_menu_options[int(selection)]:
-            case "Quit":
-                system('clear')
-                return 0
-            case "Sorting Algorithms":
-                print_menu("Sorting Algorithms")
-                input("Press enter to continue")
-                continue
-            case "Searching Algorithms":
-                print_menu("Searching Algorithms")
-                input("Press enter to continue")
-                continue
-            case "Generate Unsorted List":
-                system('clear')
-                line = "=" * MENU_WIDTH
-                print(line)
-                try:
-                    list_size = int(input("Enter list size: "))
-                    print(f"Generating random unsorted list of size {list_size}...")
-                    unsorted_list = generate_unsorted_list(list_size)
-                    print("Unsorted list successfully generated")
-                    input("Press enter to continue...")
-                    continue
-                    
-                except ValueError as v:
-                    print(v)
-                    input("Press enter to continue...")
-                    continue
-            case "Settings":
-                continue
-            case _:
-                continue
-
-        # if main_menu_options[int(selection)] == "Quit":
-        #     system('clear')
-        #     break
+    # main_menu = Menu()
+    # main_menu.set_prompt("\nSelect an option:")
     
-    # random_list = generate_unsorted_list(300000000)
+    # menu1 = Menu()
+    # menu1.set_prompt("\nSelect an option:")
+    # menu1.add_option(1, "Option1", Option1, False)
+    # menu1.add_option(2, "Return", Return, True)
+    
+    # menu2 = Menu()
+    # menu2.set_prompt("\nWhat would you like help with?")
+    # menu2.add_option(1, "My life", MyLife, False)
+    # menu2.add_option(2, "Getting help", GettingHelp, False)
+    # menu2.add_option(3, "Return", Return, True)
+    
+    # main_menu.add_option(1, "Enter new values", menu1, False)
+    # main_menu.add_option(2, "Help", menu2, False)
+    # main_menu.add_option(3, "Exit", Exit, True)
+    # main_menu.run()
 
 if __name__ == "__main__":
     # Commented out as an example of how the ConfigManager will be used in the future

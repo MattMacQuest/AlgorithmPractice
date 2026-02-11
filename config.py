@@ -1,5 +1,6 @@
 # This file should be reworked into a YAML or similar format
 import os
+# from modules.available_functions import available_sorting_functions
 
 MIN_VALUE = 0
 MAX_VALUE = 4294967296
@@ -18,4 +19,9 @@ SORTING_MENU_OPTIONS = [
     "Bubble Sort",
     "Insertion Sort",
     "Quick Sort"
+]
+
+# This is WIP (Probably unnecessary)
+AVAILABLE_FUNCTIONS_LIST = [
+    
 ]
