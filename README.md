@@ -7,7 +7,7 @@ This repo is designed solely as a "playground" of sorts to test self-implementat
     - Bubble Sort
     - Insertion Sort
     - Quick Sort
-- Add menu system
+- ~~Add menu system~~
     - Load menu items from config files dynamically
     - Change config from the menu
 - Improve documentation
@@ -17,6 +17,6 @@ This repo is designed solely as a "playground" of sorts to test self-implementat
 - Add support for data structures and related tests
 
 ## Ideas
-- Creating an "Application" class that holds things like settings, generated list
+- ~~Creating an "Application" class that holds things like settings, generated list~~
     - Maybe add a history of performance metrics as well
     - Could include the functionality of the ConfigManager class
