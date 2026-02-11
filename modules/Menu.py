@@ -92,10 +92,18 @@ def set_menu_hierarchy(app):
     
     # -----------------------------------
     
+    # Display list menu (only use for validation of small lists)
+    display_menu = Menu(app)
+    display_menu.set_prompt("\nSelect a list to display:")
+    display_menu.add_option(1, "Unsorted List", display_list, False, app)
+    display_menu.add_option(2, "Sorted List", display_list, False, app)
+    display_menu.add_option(3, "Return", Return, True)
+    
     # Fill out main menu options
     main_menu.add_option(1, "Sorting Algorithms", sorting_menu, False)
     main_menu.add_option(2, "Generate Unsorted List", generate_list, False, app)
-    main_menu.add_option(3, "Exit", Exit, True)
+    main_menu.add_option(3, "Display List", display_menu, False)
+    main_menu.add_option(4, "Exit", Exit, True)
     
     # menu1 = Menu()
     # menu1.set_prompt("\nSelect an option:")

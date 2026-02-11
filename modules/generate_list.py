@@ -1,6 +1,6 @@
 import random
 import concurrent.futures
-from config import MAX_VALUE, MIN_VALUE, MAX_PROCESSES
+from config import MAX_VALUE, MIN_VALUE, MAX_PROCESSES, LIST_PREVIEW_LENGTH
 from modules.timekeeper import *
 
 # Worker process to generate slices of the overall list
@@ -40,7 +40,15 @@ def generate_unsorted_list(size, seed=None):
         unsorted_list.append(random.randint(MIN_VALUE, MAX_VALUE))
     
     end = perf_counter()
-    
+    if size <= LIST_PREVIEW_LENGTH:
+        print(unsorted_list, "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(unsorted_list[i], end=", ")
+            else:
+                print(unsorted_list[i], end=", ...]\n")
     # Added input to make everything actually readable
     log("Completed random list", end - start)
     input("Press enter to continue")

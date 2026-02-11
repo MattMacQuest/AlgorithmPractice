@@ -42,4 +42,11 @@ def generate_list(app):
             else:
                 sys.exit(1)
             
-    
+def display_list(app):
+    system("clear")
+    line = "=" * MENU_WIDTH
+    print(line)
+    print(app.unsorted_list)
+    print(line)
+    print()
+    input("Press enter to continue")
