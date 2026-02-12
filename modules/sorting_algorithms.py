@@ -5,7 +5,7 @@ def insertion_sort(app):
     pass
 
 def bubble_sort(app):
-    sorted_list = app.unsorted_list.copy()
+    sorted_list = app.current_lists["Unsorted"].copy()
     swapping = True
     end = len(sorted_list)
     while swapping:
@@ -15,4 +15,4 @@ def bubble_sort(app):
                 sorted_list[i - 1], sorted_list[i] = sorted_list[i], sorted_list[i - 1]
                 swapping = True
         end -= 1
-    app.sorted_list = sorted_list
+    app.current_lists["Sorted"] = sorted_list

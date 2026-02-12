@@ -1,5 +1,5 @@
-from modules.menu_options import *
-from modules.sorting_algorithms import *
+from os import system
+from modules import menu_options
 
 class Menu:
     # Constructor
@@ -83,27 +83,27 @@ def set_menu_hierarchy(app):
     # Creating the menu for sorting algorithms
     sorting_menu = Menu(app)
     sorting_menu.set_prompt("\nSelect an algorithm to test:")
-    sorting_menu.add_option(1, "Bubble Sort", bubble_sort, False, app)
-    sorting_menu.add_option(2, "Insertion Sort", insertion_sort, False, app)
-    sorting_menu.add_option(3, "Quick Sort", quick_sort, True, app)
-    sorting_menu.add_option(4, "Return", Return, True)
+    sorting_menu.add_option(1, "Bubble Sort", menu_options.do_bubble_sort, False, app)
+    sorting_menu.add_option(2, "Insertion Sort", menu_options.do_insertion_sort, False, app)
+    sorting_menu.add_option(3, "Quick Sort", menu_options.do_quick_sort, True, app)
+    sorting_menu.add_option(4, "Return", menu_options.Return, True)
     
     # Add searching menu declaration here
     
     # -----------------------------------
     
-    # Display list menu (only use for validation of small lists)
+    # Display list menu
     display_menu = Menu(app)
     display_menu.set_prompt("\nSelect a list to display:")
-    display_menu.add_option(1, "Unsorted List", display_list, False, app)
-    display_menu.add_option(2, "Sorted List", display_list, False, app)
-    display_menu.add_option(3, "Return", Return, True)
+    display_menu.add_option(1, "Unsorted List", menu_options.display_list, False, app, "Unsorted")
+    display_menu.add_option(2, "Sorted List", menu_options.display_list, False, app, "Sorted")
+    display_menu.add_option(3, "Return", menu_options.Return, True)
     
     # Fill out main menu options
     main_menu.add_option(1, "Sorting Algorithms", sorting_menu, False)
-    main_menu.add_option(2, "Generate Unsorted List", generate_list, False, app)
+    main_menu.add_option(2, "Generate Unsorted List", menu_options.generate_list, False, app)
     main_menu.add_option(3, "Display List", display_menu, False)
-    main_menu.add_option(4, "Exit", Exit, True)
+    main_menu.add_option(4, "Exit", menu_options.Exit, True)
     
     # menu1 = Menu()
     # menu1.set_prompt("\nSelect an option:")

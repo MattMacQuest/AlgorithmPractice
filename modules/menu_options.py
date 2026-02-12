@@ -1,8 +1,9 @@
 import sys
 from os import system
-from modules.sorting_algorithms import *
-from modules.generate_list import *
-from config import MENU_WIDTH
+from modules import sorting_algorithms, timekeeper
+import modules.generate_list as do_generate_list
+from time import perf_counter
+from config import MENU_WIDTH, LIST_PREVIEW_LENGTH
 
 # Exit function
 def Exit():
@@ -19,15 +20,16 @@ def Return():
 def generate_list(app):
     system("clear")
     line = "=" * MENU_WIDTH
-    print(line)
+    # print(line)
     list_size = None
+    
     
     # Loop is here to validate input
     while not list_size:
         try:
             list_size = int(input("Please enter desired list size: "))
             print(f"Generating unsorted list of size {list_size}...")
-            app.unsorted_list = generate_unsorted_list(list_size)
+            app.current_lists["Unsorted"] = do_generate_list.generate_unsorted_list(list_size)
             print("Unsorted list successfully generated")
             return
         
@@ -42,11 +44,64 @@ def generate_list(app):
             else:
                 sys.exit(1)
             
-def display_list(app):
+def display_list(app, key):
     system("clear")
     line = "=" * MENU_WIDTH
-    print(line)
-    print(app.unsorted_list)
+    print(line, "\n")
+    if len(app.current_lists[key]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists[key], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists[key][i], end=", ")
+            else:
+                print(app.current_lists[key][i], end=", ...]\n\n")
     print(line)
     print()
+    input("Press enter to continue")
+    
+def do_quick_sort(app):
+    pass
+
+def do_insertion_sort(app):
+    pass
+
+def do_bubble_sort(app):
+    system("clear")
+    timekeeper.log("Starting bubble sort")
+    
+    print(f"Sorting list of size {len(app.current_lists["Unsorted"])}:")
+    
+    # This prints the first LIST_PREVIEW_LENGTH items in a list in readable, list-style format
+    # I could roll this into a generic print function to save on repeated code as it shows up
+    # multiple times as is. I even have a generic display_list function up there ^^^
+    if len(app.current_lists["Unsorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Unsorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Unsorted"][i], end=", ")
+            else:
+                print(app.current_lists["Unsorted"][i], end=", ...]\n\n")
+    
+    # Roll this into some timekeeper function to clean it up maybe?
+    start = perf_counter()
+    sorting_algorithms.bubble_sort(app)
+    end = perf_counter()
+    
+    timekeeper.log("Bubble sort complete", end - start)
+    
+    print(f"Sorted list of size {len(app.current_lists["Sorted"])}:")
+    if len(app.current_lists["Sorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Sorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Sorted"][i], end=", ")
+            else:
+                print(app.current_lists["Sorted"][i], end=", ...]\n\n")
+                
     input("Press enter to continue")

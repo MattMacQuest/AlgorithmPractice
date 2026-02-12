@@ -1,7 +1,6 @@
 # import atexit
 from time import strftime, localtime
 from datetime import timedelta
-from time import perf_counter
 
 # This function converts the time to a string for printing in a 
 # standardized format
@@ -22,7 +21,7 @@ def log(s, elapsed=None):
     
     # If elapsed time provided, prints it on a new line
     if elapsed:
-        print("Elapsed time:", elapsed)
+        print(f"Elapsed time: {elapsed} seconds")
     print(line)
     print()
     
