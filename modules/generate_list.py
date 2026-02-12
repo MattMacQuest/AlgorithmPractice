@@ -1,7 +1,8 @@
 import random
 import concurrent.futures
 from config import MAX_VALUE, MIN_VALUE, MAX_PROCESSES, LIST_PREVIEW_LENGTH
-from modules.timekeeper import *
+from modules import timekeeper
+from time import perf_counter
 
 # Worker process to generate slices of the overall list
 def generate_random_ints(count):
@@ -16,7 +17,7 @@ def generate_random_ints(count):
 # The function also times the process of generating the list, providing a benchmark that could be saved
 # to a provided "app" object for later reference as needed. Mostly it's just for show at the moment
 def generate_unsorted_list(size, seed=None):
-    log("Generating random list")
+    timekeeper.log("Generating random list")
     start = perf_counter()
     if seed:
         random.seed(seed)
@@ -48,9 +49,9 @@ def generate_unsorted_list(size, seed=None):
             if i < LIST_PREVIEW_LENGTH - 1:
                 print(unsorted_list[i], end=", ")
             else:
-                print(unsorted_list[i], end=", ...]\n")
+                print(unsorted_list[i], end=", ...]\n\n")
     # Added input to make everything actually readable
-    log("Completed random list", end - start)
+    timekeeper.log("Completed random list", end - start)
     input("Press enter to continue")
         
     return unsorted_list

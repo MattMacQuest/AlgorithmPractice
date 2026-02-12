@@ -3,7 +3,8 @@ import os
 # from modules.available_functions import available_sorting_functions
 
 MIN_VALUE = 0
-MAX_VALUE = 4294967296
+# MAX_VALUE = 4294967296
+MAX_VALUE = 50
 MAX_PROCESSES = os.cpu_count()
 LIST_PREVIEW_LENGTH = 20
 

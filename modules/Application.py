@@ -1,7 +1,9 @@
 class Application:
     def __init__(self):
-        self.unsorted_list = []
-        self.sorted_list = []
+        self.current_lists = {
+            "Unsorted": [],
+            "Sorted": []
+        }
         self.past_lists = {
             "Unsorted": [],
             "Sorted": []

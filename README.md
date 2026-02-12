@@ -1,6 +1,9 @@
 # Algorithm Practice Space
 This repo is designed solely as a "playground" of sorts to test self-implementations of various algorithms as a means to gain a deeper understanding of how they work and to test various ways to make them more/less efficient. I also plan to just use it a general testing ground for various coding concepts
 
+## Current Task:
+- Reworking imports to avoid namespace confusion by importing modules
+
 ## To Do:
 - Implement configuration files using YAML
 - Implement sorting algorithms
