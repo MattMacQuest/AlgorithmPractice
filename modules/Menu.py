@@ -95,9 +95,11 @@ def set_menu_hierarchy(app):
     # Display list menu
     display_menu = Menu(app)
     display_menu.set_prompt("\nSelect a list to display:")
-    display_menu.add_option(1, "Unsorted List", menu_options.display_list, False, app, "Unsorted")
-    display_menu.add_option(2, "Sorted List", menu_options.display_list, False, app, "Sorted")
-    display_menu.add_option(3, "Return", menu_options.Return, True)
+    display_menu.add_option(1, "Unsorted List", menu_options.display_list, False, app.current_lists, "Unsorted")
+    display_menu.add_option(2, "Sorted List", menu_options.display_list, False, app.current_lists, "Sorted")
+    display_menu.add_option(3, "Past Unsorted", menu_options.display_list, False, app.past_lists, "Unsorted", True)
+    display_menu.add_option(4, "Past Sorted", menu_options.display_list, False, app.past_lists, "Sorted", True)
+    display_menu.add_option(5, "Return", menu_options.Return, True)
     
     # Fill out main menu options
     main_menu.add_option(1, "Sorting Algorithms", sorting_menu, False)

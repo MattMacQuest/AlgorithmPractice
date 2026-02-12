@@ -1,7 +1,7 @@
 import sys
 from os import system
 from modules import sorting_algorithms, timekeeper
-import modules.generate_list as do_generate_list
+import modules.generate_list as generate_list
 from time import perf_counter
 from config import MENU_WIDTH, LIST_PREVIEW_LENGTH
 
@@ -28,7 +28,8 @@ def do_generate_list(app):
         try:
             list_size = int(input("Please enter desired list size: "))
             print(f"Generating unsorted list of size {list_size}...")
-            app.current_lists["Unsorted"] = do_generate_list.generate_unsorted_list(list_size)
+            # app.current_lists["Unsorted"] = do_generate_list.generate_unsorted_list(list_size)
+            app.set_unsorted(generate_list.generate_unsorted_list(list_size))
             print("Unsorted list successfully generated")
             return
         
@@ -43,19 +44,56 @@ def do_generate_list(app):
             else:
                 sys.exit(1)
             
-def display_list(app, key):
+# def display_list(app, key):
+#     system("clear")
+#     line = "=" * MENU_WIDTH
+#     print(line, "\n")
+#     if len(app.current_lists[key]) <= LIST_PREVIEW_LENGTH:
+#         print(app.current_lists[key], "\n")
+#     else:
+#         print("[", end="")
+#         for i in range(LIST_PREVIEW_LENGTH):
+#             if i < LIST_PREVIEW_LENGTH - 1:
+#                 print(app.current_lists[key][i], end=", ")
+#             else:
+#                 print(app.current_lists[key][i], end=", ...]\n\n")
+#     print(line)
+#     print()
+#     input("Press enter to continue")
+    
+# Perhaps modify this to work better with the past entries. Could add another optional arg to indicate
+# whether it's a current or past list, and if it's a past list, add an extra loop to go through the 2D
+# list instead
+def display_list(dict, key, past_list=False):
     system("clear")
     line = "=" * MENU_WIDTH
     print(line, "\n")
-    if len(app.current_lists[key]) <= LIST_PREVIEW_LENGTH:
-        print(app.current_lists[key], "\n")
+    if not past_list:
+        if len(dict[key]) <= LIST_PREVIEW_LENGTH:
+            print(dict[key], "\n")
+        else:
+            print("[", end="")
+            for i in range(LIST_PREVIEW_LENGTH):
+                if i < LIST_PREVIEW_LENGTH - 1:
+                    print(dict[key][i], end=", ")
+                else:
+                    print(dict[key][i], end=", ...]\n\n")
     else:
-        print("[", end="")
-        for i in range(LIST_PREVIEW_LENGTH):
-            if i < LIST_PREVIEW_LENGTH - 1:
-                print(app.current_lists[key][i], end=", ")
+        counter = 1
+        for prev_list in dict[key]:
+            print(f"{counter}.", end=" ")
+            if len(prev_list) <= LIST_PREVIEW_LENGTH:
+                print(prev_list, "\n")
+                # print(prev_list)
             else:
-                print(app.current_lists[key][i], end=", ...]\n\n")
+                print("[", end="")
+                for i in range(LIST_PREVIEW_LENGTH):
+                    if i < LIST_PREVIEW_LENGTH - 1:
+                        print(prev_list[i], end=", ")
+                    else:
+                        print(prev_list[i], end=", ...]\n\n")
+            counter += 1
+            
     print(line)
     print()
     input("Press enter to continue")

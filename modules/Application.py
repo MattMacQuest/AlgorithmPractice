@@ -18,14 +18,14 @@ class Application:
     # Currently unused
     def set_unsorted(self, unsorted_list):
         if self.current_lists["Unsorted"]:
-            self.past_lists["Unsorted"].append(self.current_lists["Unsorted"])
+            self.past_lists["Unsorted"].insert(0, self.current_lists["Unsorted"].copy())
             self.current_lists["Unsorted"] = unsorted_list
         else:
             self.current_lists["Unsorted"] = unsorted_list
             
     def set_sorted(self, sorted_list):
         if self.current_lists["Sorted"]:
-            self.past_lists["Sorted"].append(self.current_lists["Sorted"])
+            self.past_lists["Sorted"].insert(0, self.current_lists["Sorted"])
             self.current_lists["Sorted"] = sorted_list
         else:
             self.current_lists["Sorted"] = sorted_list
