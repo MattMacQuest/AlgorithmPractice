@@ -16,7 +16,7 @@ This repo is designed solely as a "playground" of sorts to test self-implementat
     - Change config from the menu
 - Improve documentation
 - Add more robust benchmarking capabilities
-    - Add memory benchmarking
+    - Add memory usage benchmarking
 - Add support for multiple test types
 - Add support for data structures and related tests
 
