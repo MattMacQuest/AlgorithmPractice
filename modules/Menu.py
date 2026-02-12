@@ -101,7 +101,7 @@ def set_menu_hierarchy(app):
     
     # Fill out main menu options
     main_menu.add_option(1, "Sorting Algorithms", sorting_menu, False)
-    main_menu.add_option(2, "Generate Unsorted List", menu_options.generate_list, False, app)
+    main_menu.add_option(2, "Generate Unsorted List", menu_options.do_generate_list, False, app)
     main_menu.add_option(3, "Display List", display_menu, False)
     main_menu.add_option(4, "Exit", menu_options.Exit, True)
     

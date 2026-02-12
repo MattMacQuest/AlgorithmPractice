@@ -17,12 +17,11 @@ def Return():
 
 # Actual menu function to call the function to generate the random list for use in 
 # the sorting algorithms
-def generate_list(app):
+def do_generate_list(app):
     system("clear")
     line = "=" * MENU_WIDTH
     # print(line)
     list_size = None
-    
     
     # Loop is here to validate input
     while not list_size:
