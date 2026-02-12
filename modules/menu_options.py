@@ -70,8 +70,10 @@ def display_list(dict, key, past_list=False):
     print(line, "\n")
     if not past_list:
         if len(dict[key]) <= LIST_PREVIEW_LENGTH:
+            print(f"List size: {len(dict[key])}")
             print(dict[key], "\n")
         else:
+            print(f"List size: {len(dict[key])}")
             print("[", end="")
             for i in range(LIST_PREVIEW_LENGTH):
                 if i < LIST_PREVIEW_LENGTH - 1:
@@ -99,10 +101,79 @@ def display_list(dict, key, past_list=False):
     input("Press enter to continue")
     
 def do_quick_sort(app):
-    pass
+    system("clear")
+    timekeeper.log("Starting quick sort")
+    
+    print(f"Sorting list of size {len(app.current_lists["Unsorted"])}:")
+    
+    if len(app.current_lists["Unsorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Unsorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Unsorted"][i], end=", ")
+            else:
+                print(app.current_lists["Unsorted"][i], end=", ...]\n\n")
+    
+    start = perf_counter()
+    
+    high = len(app.current_lists["Unsorted"]) - 1
+    app.set_sorted(sorting_algorithms.quick_sort(app.current_lists["Unsorted"], 0, high))
+    
+    end = perf_counter()
+    
+    timekeeper.log("Quick sort complete", end - start)
+    
+    print(f"Sorted list of size {len(app.current_lists["Sorted"])}:")
+    if len(app.current_lists["Sorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Sorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Sorted"][i], end=", ")
+            else:
+                print(app.current_lists["Sorted"][i], end=", ...]\n\n")
+                
+    input("Press enter to continue")
 
 def do_insertion_sort(app):
-    pass
+    system("clear")
+    timekeeper.log("Starting insertion sort")
+    
+    print(f"Sorting list of size {len(app.current_lists["Unsorted"])}:")
+    
+    if len(app.current_lists["Unsorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Unsorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Unsorted"][i], end=", ")
+            else:
+                print(app.current_lists["Unsorted"][i], end=", ...]\n\n")
+    
+    start = perf_counter()
+    
+    app.set_sorted(sorting_algorithms.quick_sort(app.current_lists["Unsorted"]))
+    
+    end = perf_counter()
+    
+    timekeeper.log("Insertion sort complete", end - start)
+    
+    print(f"Sorted list of size {len(app.current_lists["Sorted"])}:")
+    if len(app.current_lists["Sorted"]) <= LIST_PREVIEW_LENGTH:
+        print(app.current_lists["Sorted"], "\n")
+    else:
+        print("[", end="")
+        for i in range(LIST_PREVIEW_LENGTH):
+            if i < LIST_PREVIEW_LENGTH - 1:
+                print(app.current_lists["Sorted"][i], end=", ")
+            else:
+                print(app.current_lists["Sorted"][i], end=", ...]\n\n")
+                
+    input("Press enter to continue")
 
 def do_bubble_sort(app):
     system("clear")
